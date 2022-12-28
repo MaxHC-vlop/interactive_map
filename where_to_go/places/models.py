@@ -20,3 +20,27 @@ class Place(models.Model):
     class Meta:
         verbose_name = 'Place'
         verbose_name_plural = 'Places'
+
+
+class Image(models.Model):
+    place = models.ForeignKey(
+        'Place',
+        on_delete=models.CASCADE,
+        verbose_name='Место',
+        related_name='images'
+
+    )
+    photo = models.ImageField(
+        upload_to='media', verbose_name='Файл изображения'
+    )
+    sort_index = models.PositiveSmallIntegerField(
+        verbose_name='Порядок вывода', default=0
+    )
+
+    def __str__(self) -> str:
+        return f'{self.sort_index} {self.place.title}'
+
+    class Meta:
+        verbose_name = 'Image'
+        verbose_name_plural = 'Images'
+        ordering = ['sort_index']
