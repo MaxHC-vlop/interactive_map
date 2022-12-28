@@ -31,7 +31,7 @@ class Image(models.Model):
 
     )
     photo = models.ImageField(
-        upload_to='media', verbose_name='Файл изображения'
+        upload_to='images', verbose_name='Файл изображения'
     )
     sort_index = models.PositiveSmallIntegerField(
         verbose_name='Порядок вывода', default=0
