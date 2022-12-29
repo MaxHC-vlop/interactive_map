@@ -1,6 +1,6 @@
 from places.models import Place
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
 
 def show_index(request):
     places = Place.objects.all()
@@ -30,3 +30,11 @@ def show_index(request):
     context = {'feature_collection': feature_collection}
 
     return render(request, 'index.html', context)
+
+
+def places(request, place_id=1):
+    place = get_object_or_404(Place, pk=place_id)
+    place_context = {
+            'title': place.title,
+            }
+    return HttpResponse(place_context['title'])
