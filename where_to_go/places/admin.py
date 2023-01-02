@@ -1,9 +1,18 @@
 from django.contrib import admin
 from places.models import Place, Image
+from django.utils.html import format_html
 
 
 class ImageInline(admin.TabularInline):
     model = Image
+
+    readonly_fields = ('get_preview',)
+    fields = ('photo', 'get_preview', 'sort_index',)
+
+    def get_preview(self, obj, width=200):
+        return format_html(
+            f'<img src="{obj.photo.url}" width="{width}" />'
+        )
 
 
 @admin.register(Place)
