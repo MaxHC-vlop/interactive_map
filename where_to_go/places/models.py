@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.html import format_html
+from tinymce.models import HTMLField
 
 
 class Place(models.Model):
@@ -9,7 +10,7 @@ class Place(models.Model):
     description_short = models.TextField(
         max_length=255, verbose_name='Краткое описание', blank=True
     )
-    description_long = models.TextField(
+    description_long = HTMLField(
         verbose_name='Полное описание', blank=True
     )
     lng = models.FloatField(verbose_name='Широта')
@@ -41,9 +42,9 @@ class Image(models.Model):
     def __str__(self) -> str:
         return f'{self.sort_index} {self.place.title}'
 
-    def get_preview(self, obj, width=200):
+    def get_preview(self, width=200):
         return format_html(
-            f'<img src="{obj.photo.url}" width="{width}" />'
+            f'<img src="{self.photo.url}" width="{width}" />'
         )
 
     class Meta:
