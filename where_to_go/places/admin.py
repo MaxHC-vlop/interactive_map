@@ -1,9 +1,9 @@
 from django.contrib import admin
 from places.models import Place, Image
-from adminsortable2.admin import SortableStackedInline, SortableAdminBase
+from adminsortable2.admin import SortableInlineAdminMixin
 
 
-class ImageInline(SortableStackedInline, admin.TabularInline):
+class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     model = Image
     extra = 1
     readonly_fields = ('get_preview',)
@@ -11,7 +11,7 @@ class ImageInline(SortableStackedInline, admin.TabularInline):
 
 
 @admin.register(Place)
-class PlaceAdminModel(SortableAdminBase, admin.ModelAdmin):
+class PlaceAdminModel(admin.ModelAdmin):
     inlines = [ImageInline]
     fieldsets = [
         (None,         {'fields': ['title']}),
