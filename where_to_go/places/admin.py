@@ -18,8 +18,3 @@ class PlaceAdminModel(admin.ModelAdmin):
         ('Описание',   {'fields': ['description_short', 'description_long'], 'classes': ['collapse']}),
         ('Координаты', {'fields': ['lat', 'lng'], 'classes': ['collapse']}),
     ]
-
-
-@admin.register(Image)
-class ImageAdminModel(admin.ModelAdmin):
-    pass
