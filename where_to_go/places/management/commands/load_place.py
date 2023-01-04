@@ -8,7 +8,7 @@ from places.models import Place, Image
 
 
 class Command(BaseCommand):
-    help = 'Загрузка данных из JSON'
+    help = 'Getting data from json.'
 
     def add_arguments(self, parser):
         parser.add_argument(
