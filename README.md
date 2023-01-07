@@ -40,7 +40,7 @@ python manage.py createsuperuser
 - Fill the .env file with the following variables:
 
 ```
-SECRET_KEY='django secret key' (default ' ')
+SECRET_KEY='django secret key'
 
 DEBUG='Enable/disable django debug mode' (default True)
 
