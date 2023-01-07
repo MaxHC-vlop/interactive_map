@@ -15,6 +15,11 @@ class PlaceAdminModel(admin.ModelAdmin):
     inlines = [ImageInline]
     fieldsets = [
         (None,         {'fields': ['title']}),
-        ('Описание',   {'fields': ['description_short', 'description_long'], 'classes': ['collapse']}),
+        ('Описание',   {
+            'fields': [
+                'description_short', 'description_long'
+                ],
+            'classes': ['collapse']
+        }),
         ('Координаты', {'fields': ['lat', 'lng'], 'classes': ['collapse']}),
     ]

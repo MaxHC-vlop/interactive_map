@@ -37,14 +37,19 @@ def show_index(request):
 def places(request, place_id=1):
     place = get_object_or_404(Place, pk=place_id)
     place_context = {
-            'title': place.title,
-            'imgs': [img.photo.url for img in place.images.all().order_by('sort_index')],
-            'description_short': place.description_short,
-            'description_long': place.description_long,
-            'coordinates': {
-                'lat': place.lat,
-                'lng': place.lng
-            }
+        'title': place.title,
+        'imgs': [
+            img.photo.url
+            for img in place.images.all().order_by('sort_index')
+        ],
+        'description_short': place.description_short,
+        'description_long': place.description_long,
+        'coordinates': {
+            'lat': place.lat,
+            'lng': place.lng
         }
+    }
 
-    return JsonResponse(place_context, json_dumps_params={'ensure_ascii': False})
+    return JsonResponse(
+        place_context, json_dumps_params={'ensure_ascii': False}
+    )

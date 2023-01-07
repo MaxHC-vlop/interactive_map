@@ -18,7 +18,7 @@ class Place(models.Model):
 
     def __str__(self) -> str:
         return self.title
-    
+
     class Meta:
         verbose_name = 'Place'
         verbose_name_plural = 'Places'
