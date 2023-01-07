@@ -22,6 +22,12 @@ python3 -m venv env
 ```bash
 pip install -r requirements.txt
 ```
+- Create .env file (next to the manage.py file):
+```bash
+cd where_to_go
+
+touch .env
+```
 - Create a database:
 ```bash
 python manage.py migrate
@@ -31,7 +37,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-- Create .env file (next to the manage.py file). Fill it with the following variables:
+- Fill the .env file with the following variables:
 
 ```
 SECRET_KEY='django secret key' (default ' ')
