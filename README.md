@@ -42,7 +42,7 @@ python manage.py createsuperuser
 ```
 SECRET_KEY='django secret key' (default ' ')
 
-DEBUG='True/False' (default True)
+DEBUG='Enable/disable django debug mode' (default True)
 
 ALLOWED_HOSTS='allowed hosts' (default ['vladislavdrag.pythonanywhere.com', '127.0.0.1'])
 
