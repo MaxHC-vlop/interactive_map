@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.urls import reverse
 
 
-def show_index(request):
+def show_template(request):
     places = Place.objects.all()
     features = []
     for place in places:
