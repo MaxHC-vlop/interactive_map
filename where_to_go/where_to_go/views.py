@@ -41,7 +41,7 @@ def places(request, place_id=1):
         'title': place.title,
         'imgs': [
             img.photo.url
-            for img in place.images.all().order_by('sort_index')
+            for img in place.images.order_by('sort_index')
         ],
         'description_short': place.description_short,
         'description_long': place.description_long,
