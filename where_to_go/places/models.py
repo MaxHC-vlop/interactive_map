@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.html import format_html
 from tinymce.models import HTMLField
 
 
@@ -41,11 +40,6 @@ class Image(models.Model):
 
     def __str__(self) -> str:
         return f'{self.sort_index} {self.place.title}'
-
-    def get_preview(self, width=200):
-        return format_html(
-            f'<img src="{self.photo.url}" width="{width}" />'
-        )
 
     class Meta:
         verbose_name = 'Image'
