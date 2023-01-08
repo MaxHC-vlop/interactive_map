@@ -34,8 +34,8 @@ class Command(BaseCommand):
                         'description_long': place_content.get(
                             'description_long', ''
                         ),
-                        'lat': place_content['coordinates']['lat'],
-                        'lng': place_content['coordinates']['lng']
+                        'latitude': place_content['coordinates']['lat'],
+                        'longitude': place_content['coordinates']['lng']
                     }
                 )
                 self.stdout.write(f'Load {place.title} {created}')
