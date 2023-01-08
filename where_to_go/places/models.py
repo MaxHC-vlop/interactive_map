@@ -8,7 +8,7 @@ class Place(models.Model):
         max_length=100, verbose_name='Название'
     )
     description_short = models.TextField(
-        max_length=255, verbose_name='Краткое описание', blank=True
+        verbose_name='Краткое описание', blank=True
     )
     description_long = HTMLField(
         verbose_name='Полное описание', blank=True
