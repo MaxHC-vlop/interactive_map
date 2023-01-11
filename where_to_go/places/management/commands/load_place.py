@@ -56,10 +56,11 @@ class Command(BaseCommand):
                 )
                 self.stdout.write(f'Load {place.title} {created}')
 
-                images = place_content.get('imgs', [])
-                for number, image in enumerate(images, start=1):
-                    upload_image(image, number, place)
-                    self.stdout.write(f'Load {image}')
+                if created:
+                    images = place_content.get('imgs', [])
+                    for number, image in enumerate(images, start=1):
+                        upload_image(image, number, place)
+                        self.stdout.write(f'Load {image}')
 
             except KeyError as error:
                 self.stdout.write(f'Error load: {error}')
