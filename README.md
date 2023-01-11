@@ -37,18 +37,20 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-- Fill the .env file with the following variables:
+- Fill the .env file with the following variables (help [here](https://docs.djangoproject.com/en/4.1/ref/settings/)):
 
 ```
-SECRET_KEY='django secret key'
+# Django secret key
+SECRET_KEY='123'
 
-DEBUG='Enable/disable django debug mode' (default True)
+# Use true or false for switch debug mode
+DEBUG='True'
 
-ALLOWED_HOSTS='allowed hosts' (default ['vladislavdrag.pythonanywhere.com', '127.0.0.1'])
+# A list of strings representing the host/domain names that this Django site can serve
+ALLOWED_HOSTS='127.0.0.1'
 
-DATABASE_FILEPATH='database location' (default db.sqlite3)
-
-STATIC_ROOT='folder for static files' (default staticfolder)
+# Database location
+DATABASE_FILEPATH='db.sqlite3'
 ```
 
 - Load data with places(data can be found [here](https://github.com/devmanorg/where-to-go-places)):
