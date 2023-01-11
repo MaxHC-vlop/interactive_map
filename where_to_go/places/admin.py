@@ -24,19 +24,15 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
 class PlaceAdminModel(admin.ModelAdmin):
     inlines = [ImageInline]
     fieldsets = [
-        (None,         {'fields': ['title']}),
+        (None, {
+            'fields': ['title']
+        }),
         ('Описание',   {
-            'fields': [
-                'description_short', 'description_long'
-                ],
+            'fields': ['description_short', 'description_long'],
             'classes': ['collapse']
         }),
         ('Координаты', {
-            'fields': [
-                'latitude', 'longitude'
-            ],
-            'classes': [
-                'collapse'
-            ]
+            'fields': ['latitude', 'longitude'],
+            'classes': ['collapse']
         }),
     ]
