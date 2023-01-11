@@ -35,7 +35,7 @@ def show_template(request):
     return render(request, 'index.html', context)
 
 
-def places(request, place_id=1):
+def show_places(request, place_id=1):
     place = get_object_or_404(Place, pk=place_id)
     place_context = {
         'title': place.title,
