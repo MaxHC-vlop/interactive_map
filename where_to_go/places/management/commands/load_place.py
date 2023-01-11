@@ -26,8 +26,8 @@ class Command(BaseCommand):
                 response = requests.get(image)
                 response.raise_for_status()
 
-                image = BytesIO(response.content)
-                photo = ContentFile(image.read(), name=filename)
+                bytes_image = BytesIO(response.content)
+                photo = ContentFile(bytes_image.read(), name=filename)
                 Image.objects.create(
                     sort_index=number,
                     place=place,
