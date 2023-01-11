@@ -8,32 +8,6 @@ from django.core.management.base import BaseCommand
 from places.models import Place, Image
 
 
-def upload_images(images, place, self):
-    for number, image in enumerate(images, start=1):
-        try:
-            filename = urlparse(image).path.split('/')[-1]
-            response = requests.get(image)
-            response.raise_for_status()
-
-            image = BytesIO(response.content)
-            photo = ContentFile(image.read(), name=filename)
-            Image.objects.create(
-                sort_index=number,
-                place=place,
-                photo=photo
-            )
-
-            self.stdout.write(f'Load {place.title}')
-
-        except requests.exceptions.HTTPError as error:
-            self.stdout.write(f'Error load: {image}\n{error}')
-            continue
-
-        except requests.exceptions.ConnectionError as error:
-            self.stdout.write(f'Error load: {image}\n{error}')
-            continue
-
-
 class Command(BaseCommand):
     help = 'Getting data from json.'
 
@@ -44,6 +18,31 @@ class Command(BaseCommand):
             type=str,
             help='Json file url'
         )
+
+    def upload_images(self, images, place):
+        for number, image in enumerate(images, start=1):
+            try:
+                filename = urlparse(image).path.split('/')[-1]
+                response = requests.get(image)
+                response.raise_for_status()
+
+                image = BytesIO(response.content)
+                photo = ContentFile(image.read(), name=filename)
+                Image.objects.create(
+                    sort_index=number,
+                    place=place,
+                    photo=photo
+                )
+
+                self.stdout.write(f'Load {place.title}')
+
+            except requests.exceptions.HTTPError as error:
+                self.stdout.write(f'Error load: {image}\n{error}')
+                continue
+
+            except requests.exceptions.ConnectionError as error:
+                self.stdout.write(f'Error load: {image}\n{error}')
+                continue
 
     def handle(self, *args, **options):
         self.stdout.write(f'Load data...{len(options["url"])}')
@@ -87,4 +86,4 @@ class Command(BaseCommand):
 
             if created:
                 images = place_content.get('imgs', [])
-                upload_images(images, place, self)
+                self.upload_images(images, place)
