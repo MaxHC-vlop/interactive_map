@@ -12,8 +12,8 @@ class Place(models.Model):
     description_long = HTMLField(
         verbose_name='Полное описание', blank=True
     )
-    longitude = models.FloatField(verbose_name='Широта')
-    latitude = models.FloatField(verbose_name='Долгота')
+    longitude = models.FloatField(verbose_name='Долгота')
+    latitude = models.FloatField(verbose_name='Широта')
 
     def __str__(self) -> str:
         return self.title
